@@ -28,6 +28,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_module/,
         use: [
           'babel-loader'
         ]
@@ -38,7 +39,7 @@ module.exports = {
   // 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설정
   plugins: [
     new HtmlPlugin({
-      template: './index.html'
+      template: './index.html',
     }),
     new CopyPlugin({
       patterns: [
@@ -48,6 +49,8 @@ module.exports = {
   ],
 
   devServer: {
-    host: 'localhost'
+    host: 'localhost',
+    port: 8080,
+    hot: true
   }
 }
